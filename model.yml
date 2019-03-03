@@ -1,0 +1,15 @@
+model:
+  name: claim
+  attributs:
+    - nom: string
+    - prénom: string
+    - téléphone : string
+  bloc:
+    name: address
+    attributs:
+      - zipCode: number
+      - inseeCode: number
+  bloc1:
+    name: reclamation
+    attributs:
+      - reclamation: boolean
