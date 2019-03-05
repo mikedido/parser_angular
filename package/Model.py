@@ -11,10 +11,13 @@ class Model:
         self.blocs = blocs
 
     def write_model(self):
-        with open('generate/'+self.name+'.model.js', 'w') as model:
-            model.write('public function '+self.name+'() {\n')
+        with open('generate/'+self.name+'/'+self.name+'.model.ts', 'w') as model:
             for bloc in self.blocs:
-                model.write('\t'+bloc.get_name()+':'+bloc.get_name()+'\n')
+                model.write('import {'+bloc.get_name()+'} from \'./'+bloc.get_name()+'.model\';\n')
+            model.write('\n')
+            model.write('export interface '+self.name+' {\n')
+            for bloc in self.blocs:
+                model.write('\t'+bloc.get_name()+': '+bloc.get_name()+';\n')
             model.write('}')
         model.close()
 
